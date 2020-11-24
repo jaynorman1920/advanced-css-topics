@@ -4,7 +4,7 @@
   "description": "Css and Flexbox tutorial that was initially created for my students at NuCamp.",
   "main": "index.js",
   "scripts": {
-    "start": "echo \"Dummy start\"",
+    "start": "echo \"Dummy start\" && exit 1",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
