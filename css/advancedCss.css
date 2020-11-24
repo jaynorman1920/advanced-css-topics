@@ -1,0 +1,236 @@
+.cssp-container {
+  margin: 2% 15%;
+  padding: 0 5%;
+  border: 1px solid grey;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  background: #d0e7ee;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Bellota', cursive;
+}
+
+.page-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;:
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 80px;
+  color: white;
+  background: linear-gradient(45deg, #1134cf, #1adb54);
+  font-size: 2em;
+}
+
+.page-sub-header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 11000;
+  width: 100%;
+  height: 4vh;
+  background: linear-gradient(45deg, #1134cf, #1adb54);
+  color: white;
+  text-align: center;
+  padding: 4px;
+  font-size: 1.8em;
+}
+
+.page-header * {
+  margin-left: 5px;
+}
+
+.fixed-example {
+  position: fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  bottom: 15px;
+  right: 15px;
+  width: 7vw;
+  height: 7vw;
+  border-radius: 50%;
+  font-size: 85%;
+  color: white;
+  background: orange;
+}
+
+body {
+  font-family: 'Nanum Gothic';
+  margin: 0;
+  background: url("../images/bg-pattern.png");
+}
+
+a {
+  color: #0e6b6b;
+  text-decoration: none;
+}
+
+ul {
+  padding-left: 25px;
+  margin-top: 12px;
+}
+
+li {
+  margin: 5px;
+  margin-left: 2px;
+  list-style: none;
+}
+
+li::before {
+  content: '\2666';
+  margin-right: 10px;
+}
+
+.css-box-model {
+  margin: 0 auto;
+}
+
+code {
+  display: block;
+  margin: 15px 0;
+  padding: 15px;
+  border: 1px solid black;
+  background: url("../images/bg-pattern.png");
+}
+
+.box-model-example {
+  padding: 10px;
+  border-top: 100px solid green;
+  border-bottom: 100px solid blue;
+  border-left: 100px solid indigo;
+  border-right: 100px solid violet;
+  margin: 10px;
+}
+
+.zero-width-element-example {
+  width: 0;
+  height: 140px;
+  border-top: 100px solid green;
+  border-bottom: 100px solid blue;
+  border-left: 100px solid indigo;
+  border-right: 100px solid violet;
+  margin: 30px;
+}
+
+.zero-height-element-example {
+  width: 140px;
+  height: 0;
+  border-top: 100px solid green;
+  border-bottom: 100px solid blue;
+  border-left: 100px solid indigo;
+  border-right: 100px solid violet;
+  margin: 30px;
+}
+
+.point-content-example {
+  width: 0;
+  height: 0;
+  border-top: 100px solid green;
+  border-bottom: 100px solid blue;
+  border-left: 100px solid indigo;
+  border-right: 100px solid violet;
+  margin: 30px;
+}
+
+.triangle {
+  width: 0px;
+  height: 0px;
+  border-left: 300px solid transparent;
+  border-right: 300px solid transparent;
+  border-bottom: 300px solid green;
+}
+
+.indentation {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0 1.5%;
+}
+
+.image-block {
+  display: block;
+}
+
+.image-resp {
+  width: 100%;
+}
+
+.flag {
+  position: relative;
+  width: 100%;
+  height: 65vh;
+  margin: 2% 0;
+}
+
+.flag-strip {
+  width: 100%;
+  height: 7.6923%;
+}
+
+.flag-strip:nth-child(odd) {
+  background-color: red;
+}
+
+.flag-strip:nth-child(even) {
+  background-color: white;
+}
+
+.blue-field {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  width: 40%;
+  height: 53.8%;
+  background: blue;
+}
+
+.star-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  height: 11.1111%;
+}
+
+.star-row:nth-child(odd) {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.star-row:nth-child(odd) * {
+  width: 7%;
+}
+
+.star-row:nth-child(even) {
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.star-row:nth-child(even) * {
+  width: 7%;
+}
+/*# sourceMappingURL=advancedCss.css.map */

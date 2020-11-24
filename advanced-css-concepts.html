@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Advanced CSS Concepts: CSS Box Model, Positioning, and Flexbox Tutorial</title>
+        <link rel="stylesheet" href="css/google-fonts.css" />
+        <link rel="stylesheet" href="css/advancedCss.css" />
+    </head>
+    <body>
+        <header class="page-header">
+            <span>Extracurriculum Materials</span>
+        </header>
+        <div class="page-sub-header">Advanced CSS Concepts</div>
+        <section class="cssp-container">
+            <h2>Rationale for creating this tutorial, plus things to consider</h2>
+            <p>
+                Upon reviewing the current course material, as well as reviewing
+                some of the feedback for week 1, I felt that it would be beneficial to
+                make bonus CSS content for those who wish to take their
+                understanding of CSS to the next level. I want to stress that this material is optional in the context 
+                of the assignments you will do for the HTML-CSS-Javascript course. However, gaining a solid understanding of the information on this page
+                will help you understand the concepts that are taught in the Bootstrap course more easily, as well as giving you an advantage over your 
+                colleagues.
+            </p>
+            <p>
+                I would strongly encourage you all to edit the files on this page, as well as the css files that are referenced
+                on this page, as much as you'd like. One of the best ways to develop your skills as a web developer (regardless of whether you 
+                choose to do front-end or full-stack) is to inspect and edit files, and attempt to reverse
+                engineer code that you find online. 
+            </p>
+            <p>
+                I'd also like to mention that while this page is overall responsive (meaning that it can adjust 
+                its layout based on the viewport of a device), this page is meant to be experienced on a desktop so that you have access to the inspect tools
+                for your browser. If you're unsure how to do this, type "how to inspect element in browser-name", and you should be able to find helpful resources. 
+            </p>
+            <div>
+                Contents:
+                <ul>
+                    <li><a href="#css-box-model">CSS Box Model</a></li>
+                    <li><a href="#content-dimensions">Element Content Dimensions</a></li>
+                    <li><a href="#css-positioning">CSS Positioning</a></li>
+                    <li><a href="#flex-box">Flexbox</a></li>
+                    <li><a href="#additional-resources">Additional Resources</a></li>
+                </ul>
+            </div>
+        </section>
+        <section id="css-box-model" class="cssp-container"> 
+            <h2><a href="#">#</a> CSS Box Model</h2>
+            <p>
+                CSS Positioning allows you to change the position from the
+                normal flow of the CSS box model (which consists of the contents,
+                padding, border, and margin respectively). There are also 4 more aspects to the box model: top, bottom, left
+                and right. These represent the outermost boundaries of an HTML element. The box model can be visualized as:
+            </p>
+            <img src="images/css box model.png" class="image-block css-box-model" alt="diagram of css box model" width="550" />
+            <p>
+                Notice that the innermost rectangle in the box model is referring to the content (i.e. the information that's inside of the start and end tags). 
+                The padding refers to the space that separates the content from the potentially visible boundary. This 
+                visible boundary is referred to as the border. The margin refers to the spacing that is 
+                outside of the visible border. If we apply the following class to the next p element:
+                <code>
+                    .box-model-example {<br>
+                        <span class="indentation"></span>padding: 10px;<br>
+                        <span class="indentation"></span>border-top: 10px solid green;<br>
+                        <span class="indentation"></span>border-bottom: 10px solid blue;<br>
+                        <span class="indentation"></span>border-left: 10px solid indigo;<br>
+                        <span class="indentation"></span>border-right: 10px solid violet;<br>
+                        <span class="indentation"></span>margin: 10px;<br>
+                      }
+                </code>
+            </p>
+            <p class="box-model-example">Here you can see how the border surrounds the padding and the content of this p element. Go inside the inspector of your browser
+                in order to see the outermost boundary of the element. You will notice that the margin is colored orange by the browser if you're using Chrome.
+                Feel free to play around with this class to see how the margin relates to the padding, and vice versa.
+                But did you know that you can do this (perpare for voodoo magic in the next section)?:
+            </p>
+        </section>
+        <section id="content-dimensions" class="cssp-container">
+            <h2><a href="#">#</a> Strange things you can do to the content's dimensions</h2>
+            <p>
+                <div class="zero-width-element-example"></div>
+                <div class="zero-height-element-example"></div>
+                <div class="point-content-example"></div>
+                <div class="triangle"></div>
+            </p>
+            <p>
+                Now, you might have this reaction on your face:
+            </p>
+            <img
+                class="image-block image-resp"
+                src="https://thumbs.gfycat.com/EvenWelldocumentedAsiaticgreaterfreshwaterclam-size_restricted.gif" 
+                alt="steve harvey confused"
+                height="600"
+            />
+            <p>
+                But this is all pure CSS, <a href="https://www.youtube.com/watch?v=iCEIAlt5BHk" target="_blank">believe it</a>!
+                The way these rectangles are rendered is by setting either the width or the height property to 0.
+            </p>
+            <code>
+                .point-content-example {<br>
+                    <span class="indentation"></span>width: 0;<br>
+                    <span class="indentation"></span>height: 0;<br>
+                    <span class="indentation"></span>border-top: 100px solid green;<br>
+                    <span class="indentation"></span>border-bottom: 100px solid blue;<br>
+                    <span class="indentation"></span>border-left: 100px solid indigo;<br>
+                    <span class="indentation"></span>border-right: 100px solid violet;<br>
+                    <span class="indentation"></span>margin: 30px;<br>
+                  }
+            </code>
+            <code>
+                .zero-height-element-example {<br>
+                    <span class="indentation"></span>width: 140px;<br>
+                    <span class="indentation"></span>height: 0;<br>
+                    <span class="indentation"></span>border-top: 100px solid green;<br>
+                    <span class="indentation"></span>border-bottom: 100px solid blue;<br>
+                    <span class="indentation"></span>border-left: 100px solid indigo;<br>
+                    <span class="indentation"></span>border-right: 100px solid violet;<br>
+                    <span class="indentation"></span>margin: 30px;<br>
+                  }
+            </code>
+            <code>
+                .zero-width-element-example {<br>
+                    <span class="indentation"></span>width: 0;<br>
+                    <span class="indentation"></span>height: 140px;<br>
+                    <span class="indentation"></span>border-top: 100px solid green;<br>
+                    <span class="indentation"></span>border-bottom: 100px solid blue;<br>
+                    <span class="indentation"></span>border-left: 100px solid indigo;<br>
+                    <span class="indentation"></span>border-right: 100px solid violet;<br>
+                    <span class="indentation"></span>margin: 30px;<br>
+                  }
+            </code>
+            <p> 
+                This causes the content to be either one dimensional (essentially turning the content into a line), or zero dimensional (effectively turning the content
+                into a single point). However, this doesn't affect the visibility of the border property. If you noticed in the previous section, you saw diagonal lines 
+                that went from one of the vertices of the content to either the top, bottom, left, or right points of the element; I intentionally used different colors
+                for the borders in order to highlight this more effectively. What's happening here is that the 
+                diagonal lines are converging because the content is either a point or a line.
+            </p>
+        </section>
+        <section id="css-positioning" class="cssp-container">
+            <h2><a href="#">#</a> Working with CSS position properties</h2>
+            <!-- Always give credit to content creators -->
+            <div>Star icon made from <a href="#iconResource">Icon Fonts</a> is licensed by CC BY 3.0</div>
+            <!-- CSS rules for generating the American flag -->
+            <div class="flag">
+                <div class="flag-strip"></div>
+                <div class="flag-strip"></div>
+                <div class="flag-strip"></div>
+                <div class="flag-strip"></div>
+                <div class="flag-strip"></div>
+                <div class="flag-strip"></div>
+                <div class="flag-strip"></div>
+                <div class="flag-strip"></div>
+                <div class="flag-strip"></div>
+                <div class="flag-strip"></div>
+                <div class="flag-strip"></div>
+                <div class="flag-strip"></div>
+                <div class="flag-strip"></div>
+                <div class="blue-field">
+                    <div class="star-row">
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                    </div>
+                    <div class="star-row">
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                    </div>
+                    <div class="star-row">
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                    </div>
+                    <div class="star-row">
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                    </div>
+                    <div class="star-row">
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                    </div>
+                    <div class="star-row">
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                    </div>
+                    <div class="star-row">
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                    </div>
+                    <div class="star-row">
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                    </div>
+                    <div class="star-row">
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                        <img src="images/star.svg" />
+                    </div>
+                </div>
+            </div>
+            <p>
+                Woah! Is that the American flag? Yep, all of this was created using CSS, SVG, and a powerful css feature called Flexbox. This flag
+                is rendered with relative positioning, absolite positioning, and a few features from Flexbox. But before we discuss the flag in depth,
+                let's discuss what each position property value does.
+            </p>
+            <p>
+                <ul>
+                    <li><a href="#static" id="staticLink">static</a></li>
+                    <li><a href="#relative" id="relativeLink">relative</a></li>
+                    <li><a href="#absolute" id="absoluteLink">absolute</a></li>
+                    <li><a href="#fixed" id="fixedLink">fixed</a></li>
+                    <li><a href="#sticky" id="stickyLink">sticky</a></li>
+                </ul>
+            </p>
+            <section id="static">
+                <h1><a href="#staticLink">^</a> Static Positioning</h1>
+                <p>
+                    HTML elements have a static position by default. This means that the elements will be positioned in the order as they appear in the document.
+                    Elements that have static positioning can not be altered with the top, bottom, left, or right properties.
+                </p>
+            </section>
+            <section id="relative">
+                <h1><a href="#relativeLink">^</a> Relative Positioning</h1>
+                <p>
+                    HTML elements that are set with relative positioning will initially be positioned as they appear in the document, but they are able to be changed
+                    with the top, bottom, left, and right properties. Recall that the top, bottom, left, and right properties refer to the outermost points of
+                    an elements box model. That is, these properties are located at the corners of where the margin ends.
+                </p>
+            </section>
+            <section id="absolute">
+                <h1><a href="#absoluteLink">^</a> Absolute Positioning</h1>
+                <p>
+                    Here is where things can get tricky. HTML elements that have absolute positioning are positioned in relation to the nearest ancestor
+                    that also has a non-static position. If an absolutely positioned element have no ancestor that has a non-static position, the element is 
+                    positioned in relation to the browser window at the top.  
+                </p>
+            </section>
+            <section id="fixed">
+                <h1><a href="#fixedLink">^</a> Fixed Positioning</h1>
+                <p>
+                    This is similar to the absolutely positioned element in that is relative to the browser window, except that the element doesn't move when the
+                    user scrolls up and down. If you look into the source code, the element that displays the orange circle on the bottom right is right 
+                    below this p element.
+                </p>
+                <a href="#"><div class="fixed-example">Home</div></a>
+            </section>
+            <section id="sticky">
+                <h1><a href="#stickyLink">^</a> Sticky Positioning</h1>
+                This positions an element with relative positioning until the scroll bar is on the same level. This position is typically used for header styles.
+            </section>
+        <p>
+            Now that I've explained what each position value does, let's analyze the CSS/SVG/Flexbox flag class by class. Here is the styling for the flag class:
+        </p>
+        <code>
+            .flag {<br>
+                <span class="indentation"></span>position: relative;<br>
+                <span class="indentation"></span>width: 100%;<br>
+                <span class="indentation"></span>height: 65vh;<br>
+                <span class="indentation"></span>margin: 2% 0;<br>
+              }
+        </code>
+        <p>
+            The flag class is set to a position of relative,  meaning that it has its normal flow, unless we set the top, bottom, left, and right properties.
+            But here, we aren't setting those properties. Why, you ask? It's because we are going to use an absolutely positioned element inside of the flag element, and 
+            remember that an absolutely positioned element's top, bottom, left, and right properties are based on its nearest non-statically positioned element. The width is 
+            set to 100%, which means it will horizontally span the entirely of its parent element's width.  Height is set to 65 vh, which means that it will vertically span 65% 
+            of the viewport's height; the viewport refers to the portion of the browser that is visible to the user. Now let's take a look at the stripe class:
+        </p>
+        <code>
+            .flag-strip {<br>
+                <span class="indentation"></span>width: 100%<br>
+                <span class="indentation"></span>height: 7.6923%;<br>
+            }
+            <br><br>
+            .flag-strip:nth-child(odd) {<br>
+                <span class="indentation"></span>background-color: red;<br>
+            }
+            <br><br>
+            .flag-strip:nth-child(even) {<br>
+                <span class="indentation"></span>background-color: white;<br>
+            }
+        </code>
+        <p>
+            The top class has a width of 100%, which will span the entire width of the parent's width. The height is set to 7.6923% because that is the result of 1 / 13. 
+            Since there are 13 strips in the American flag, the total height of all the 13 strip classes will equal to 100%. The nth-child(odd) pseudoclass applies a red 
+            background to the odd numbered children (that is, the 1st, 3rd, 5th, 7th, and so on element will have a red background).
+        </p>
+        <code>
+            .blue-field {<br>
+                <span class="indentation"></span>position: absolute;<br>
+                <span class="indentation"></span>top: 0;<br>
+                <span class="indentation"></span>left: 0;<br>
+                <span class="indentation"></span>z-index: 10000;<br>
+                <span class="indentation"></span>width: 40%;<br>
+                <span class="indentation"></span>height: 53.8%;<br>
+                <span class="indentation"></span>background: blue;<br>
+              }
+        </code>
+        <p>
+            Here, we set the top and left properties to zero because we want the blue field element to sit at the top left edge of the element (therefore mimicking
+            the look of the American flag). The z-index is also a property that is only available to non-statically positioned elements, and what it does is set the overlay order
+            of elements. So the higher the z-index value is, the more likely that element will render on top of other elements, which is why the blue field class is over the red 
+            and white strips. If we set the z-index to a negative, the blue field will appear beneath the red and white strips. The z-index doesn't have to be 10000, but it is 
+            common practice to set z-index values really high values to ensure that unintentioned elements don't override the z-index.
+        </p>
+        </section>
+        <section id="flex-box" class="cssp-container">
+            <h2><a href="#">#</a> CSS Flexbox</h2>
+            <p>
+                CSS has a very powerful tool called Flexbox. This allows content to be layed out in the form of rows and columns. To use Flexbox, set the display property
+                to flex. Once you enable Flexbox, you can now use the other flex properties. The properties that this page will use are: flex-flow and justify-content. flex-flow
+                is a shorthand for two flex properties: flex-direction and flex-wrap. Flex-direction determines what direction the items inside of a flex container will render. The 
+                default value is row (meaning the items will be rendered left to right); other values are column, reverse-column, reverse-row. The flex-direction property determines what 
+                is the "main axis" of a container. Flex-wrap determines if the items need to be wrapped once the end of the container's width is reached. 
+                By default, flex-wrap tries to fit all the items on one row. Justify-content aligns items on the main axis. So in our case, the main axis is row, so the 
+                justify-content property will apply from left to right. If flex-direction was set to column, then justify-content would apply from top-to-bottom.
+                Now let's dive into our Flexbox classes.
+            </p>
+            <code>
+                .star-row {<br>
+                    <span class="indentation"></span>display: -webkit-box;<br>
+                    <span class="indentation"></span>display: -ms-flexbox;<br>
+                    <span class="indentation"></span>display: flex;<br>
+                    <span class="indentation"></span>-webkit-box-orient: horizontal;<br>
+                    <span class="indentation"></span>-webkit-box-direction: normal;<br>
+                    <span class="indentation"></span>-ms-flex-flow: row wrap;<br>
+                    <span class="indentation"></span>flex-flow: row wrap;<br>
+                    <span class="indentation"></span>height: 11.1111%;<br>
+                  }
+            </code>
+            <p>
+                Most of the css rules you see here, you don't have to worry about. We will only focus on display:flex, flex-flow: row wrap, and height: 11.1111%.
+                As stated above, setting display with the value of flex allows the browser to use Flexbox and gives us access to the other flex properties. You always want
+                to put the display:flex rule on a container. The flex-flow property sets two flex properties at the same time: the left value sets flex-direction 
+                to row, while the right value sets the flex-wrap property to wrap. The default value for flex-wrap is row nowrap. The height is set to 11.1111% because
+                we need the height of the stars to take up 1/9th of the height of the blue field (since there are 9 rows of stars in the American flag). The other properties 
+                were generated by a VS Code tool called Live Sass Compiler. This is somewhat outside of the scope of this course, so it you're interested in learning about
+                SASS/SCSS, send me a message through Slack. 
+            </p>
+            <code>
+                .star-row:nth-child(odd) {<br>
+                    <span class="indentation"></span>justify-content: space-between;<br>
+                }<br><br>
+                
+                .star-row:nth-child(odd) * {<br>
+                    <span class="indentation"></span>width: 7%;<br>
+                }<br><br>
+                
+                .star-row:nth-child(even) {<br>
+                    <span class="indentation"></span>justify-content: space-around;<br>
+                }<br><br>
+                
+                .star-row:nth-child(even) * {<br>
+                    <span class="indentation"></span>width: 7%;<br>
+                }
+            </code>
+            <p>
+                The justify-content rule in combination of the nth-child pseudo class, is applying different spacing to mathc the American flag. The odd numbered 
+                children have spaces between each item, while the even numbered items have spaces on both sides. 
+            </p>
+        </section>
+        <section id="additional-resources" class="cssp-container">
+            <h2><a href="#">#</a> Additional Resources</h2>
+            <ul>
+                <li><a href="https://css-tricks.com/the-css-box-model/" target="_blank">CSS Box Model</a></li>
+                <li><a href="https://vanseodesign.com/css/css-positioning/" target="_blank">How Well Do You Understand CSS Positioning?</a></li>
+                <li><a id="iconResource" href="http://www.onlinewebfonts.com/icon" target="_blank">Place to get online web fonts</a></li>
+                <li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank">Complete Guide To Flexbox</a></li>
+            </ul>
+        </section>
+    </body>
+</html>
