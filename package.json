@@ -1,0 +1,25 @@
+{
+  "name": "advanced-css-topics",
+  "version": "1.0.0",
+  "description": "Css and Flexbox tutorial that was initially created for my students at NuCamp.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaynorman1920/advanced-css-topics.git"
+  },
+  "keywords": [
+    "flexbox",
+    "css",
+    "google-fonts",
+    "positioning"
+  ],
+  "author": "jay norman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaynorman1920/advanced-css-topics/issues"
+  },
+  "homepage": "https://github.com/jaynorman1920/advanced-css-topics#readme"
+}
